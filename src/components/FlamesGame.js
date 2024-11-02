@@ -10,20 +10,21 @@ function FlamesGame() {
       setResult("Please Enter valid input");
       return;
     }
-
-    let str1 = name1;
-    let str2 = name2;
-
-    for (let char of name1) {
-      if (str2.includes(char)) {
-        str1 = str1.replace(char, '');
-        str2 = str2.replace(char, '');
+  
+    let str1 = name1.split('');
+    let str2 = name2.split('');
+  
+    str1.forEach((char) => {
+      const indexInStr2 = str2.indexOf(char);
+      if (indexInStr2 !== -1) {
+        str1.splice(str1.indexOf(char), 1);
+        str2.splice(indexInStr2, 1);
       }
-    }
-
+    });
+  
     const remainingLength = str1.length + str2.length;
     const relationshipIndex = remainingLength % 6;
-
+  
     const relationshipMapping = {
       1: "Friends",
       2: "Love",
@@ -32,9 +33,10 @@ function FlamesGame() {
       5: "Enemy",
       0: "Siblings",
     };
-
+  
     setResult(relationshipMapping[relationshipIndex]);
   };
+  
 
   const clearInputs = () => {
     setName1('');
