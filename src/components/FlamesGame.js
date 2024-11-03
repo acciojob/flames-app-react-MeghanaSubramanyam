@@ -61,7 +61,7 @@ function FlamesGame() {
         placeholder="Enter second name"
       />
       <button data-testid="calculate_relationship" onClick={calculateRelationship}>
-        Calculate Relationship
+        Calculate Relationship Future
       </button>
       <button data-testid="clear" onClick={clearInputs}>
         Clear
